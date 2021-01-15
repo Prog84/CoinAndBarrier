@@ -691,9 +691,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _container: {fileID: 1711498438}
   _templates:
-  - {fileID: 1383091606433083239, guid: ee968e4cae89b844dae6dc64c5469d4f, type: 3}
-  - {fileID: 1663076907101028631, guid: 8e9373bf1211824499a741a95109be77, type: 3}
-  - {fileID: 8900559055073467458, guid: a2a6fca97d234d64e8be41e346570edd, type: 3}
+  - {fileID: 1383091606433083238, guid: ee968e4cae89b844dae6dc64c5469d4f, type: 3}
+  - {fileID: 1663076907101028630, guid: 8e9373bf1211824499a741a95109be77, type: 3}
+  - {fileID: 8900559055073467469, guid: a2a6fca97d234d64e8be41e346570edd, type: 3}
   _capacity: 20
 --- !u!4 &1711498440
 Transform:

@@ -16,11 +16,11 @@ public class PlayerMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
-        Jump();
+        TryMove();
+        TryJump();
     }
 
-    private void Move()
+    private void TryMove()
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -28,7 +28,7 @@ public class PlayerMover : MonoBehaviour
         }
     }
 
-    private void Jump()
+    private void TryJump()
     {
         if (_groundDetection.IsGrounded && Input.GetKey(KeyCode.Space))
         {

@@ -12,16 +12,18 @@ public class LevelGenerator : MonoBehaviour
 
     private HashSet<Vector3Int> _collisionsMatrix = new HashSet<Vector3Int>();
     private int _startPositionView = 0;
+    private Camera _camera;
 
     private void Start()
     {
+        _camera = Camera.main;
         _objectPool.Initialize();
     }
 
     private void Update()
     {
         FillRange(_player.position, _viewRange);
-        _objectPool.DisableObjectAboardScreen();
+        DisableObjectAboardScreen();
     }
 
     private void FillRange(Vector3 center, float viewRange)
@@ -75,6 +77,13 @@ public class LevelGenerator : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void DisableObjectAboardScreen()
+    {
+        Vector3 disablePoint = _camera.ViewportToWorldPoint(new Vector2(0, 0.5f));
+
+        _objectPool.TryDisableObject(disablePoint.x); 
     }
 
     private Vector3 GridToWorldPosition(Vector3Int gridPosition)
