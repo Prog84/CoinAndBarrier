@@ -3,9 +3,9 @@ using UnityEngine.Events;
 
 public class PlayerWallet : MonoBehaviour
 {
-    private int _coin;
+    private int _coins;
 
-    public event UnityAction<int> CoinChanged;
+    public event UnityAction<int> CoinTaken;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,7 +18,7 @@ public class PlayerWallet : MonoBehaviour
 
     private void IncreaseCoin()
     {
-        _coin++;
-        CoinChanged?.Invoke(_coin);
+        _coins++;
+        CoinTaken?.Invoke(_coins);
     }
 }

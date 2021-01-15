@@ -7,6 +7,8 @@ public class Menu : MonoBehaviour
     [SerializeField] private CreatorsScreen _creatorsScreen;
     [SerializeField] private Animator _animatorCreatorsScreen;
 
+    private string _menuShow = "Show";
+
     private void OnEnable()
     {
         _menuScreen.PlayButtonClick += OnPlayButtonClick;
@@ -31,7 +33,7 @@ public class Menu : MonoBehaviour
     private void OnCreatorsButtonClick()
     {
         _menuScreen.Close();
-        _animatorCreatorsScreen.SetBool("Show", true);
+        _animatorCreatorsScreen.SetBool(_menuShow, true);
     }
 
     private void OnExitButtonClick()
@@ -41,7 +43,7 @@ public class Menu : MonoBehaviour
 
     private void OnBackButtonClick()
     {
-        _animatorCreatorsScreen.SetBool("Show", false);
+        _animatorCreatorsScreen.SetBool(_menuShow, false);
         _menuScreen.Open();
     }
 }

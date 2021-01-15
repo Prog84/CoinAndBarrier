@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _layer: 1
-  _nameObject: 1
+  _typeObject: "\u041C\u043E\u043D\u0435\u0442\u0430"
   _chance: 10
 --- !u!114 &7920156170376062153
 MonoBehaviour:

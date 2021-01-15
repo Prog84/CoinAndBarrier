@@ -2,9 +2,10 @@
 using System.Linq;
 using UnityEngine;
 
-public class LevelGenerator : ObjectPool
+public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] GridObject[] _templates;
+    [SerializeField] private ObjectPool _objectPool;
     [SerializeField] private Transform _player;
     [SerializeField] private float _viewRange;
     [SerializeField] private float _cellSize;
@@ -12,15 +13,15 @@ public class LevelGenerator : ObjectPool
     private HashSet<Vector3Int> _collisionsMatrix = new HashSet<Vector3Int>();
     private int _startPositionView = 0;
 
-    private void Awake()
+    private void Start()
     {
-        Initialize();
+        _objectPool.Initialize();
     }
 
     private void Update()
     {
         FillRange(_player.position, _viewRange);
-        DisableObjectAboardScreen();
+        _objectPool.DisableObjectAboardScreen();
     }
 
     private void FillRange(Vector3 center, float viewRange)
@@ -51,7 +52,7 @@ public class LevelGenerator : ObjectPool
 
         var position = GridToWorldPosition(gridPosition);
 
-        if (TryGameObject(template.NameObject, out GridObject gridObject))
+        if (_objectPool.TryGameObject(template.TypeObject, out GridObject gridObject))
         {
             gridObject.gameObject.SetActive(true);
             gridObject.gameObject.transform.position = position;
