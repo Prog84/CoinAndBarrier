@@ -11,6 +11,7 @@ public class DisableObjects : MonoBehaviour
     {
         _camera = Camera.main;
     }
+
     private void Update()
     {
         Vector3 disablePoint = _camera.ViewportToWorldPoint(new Vector2(_leftDisablePointX, 0));
