@@ -8,15 +8,15 @@ public class WalletPresenter : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerWallet.CoinTaken += OnScoreCoinChanged;
+        _playerWallet.CoinTaken += OnScoreCoinTaken;
     }
 
     private void OnDisable()
     {
-        _playerWallet.CoinTaken -= OnScoreCoinChanged;
+        _playerWallet.CoinTaken -= OnScoreCoinTaken;
     }
 
-    private void OnScoreCoinChanged(int score)
+    private void OnScoreCoinTaken(int score)
     {
         _scoreCoin.text = score.ToString();
     }

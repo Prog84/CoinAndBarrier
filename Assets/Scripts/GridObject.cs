@@ -3,12 +3,9 @@
 public class GridObject : MonoBehaviour
 {
     [SerializeField] private GridLayer _layer;
-    [SerializeField] private string _typeObject;
     [SerializeField] private int _chance;
 
     public GridLayer Layer => _layer;
-
-    public string TypeObject => _typeObject;
 
     public int Chance => _chance;
 

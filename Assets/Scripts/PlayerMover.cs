@@ -3,7 +3,7 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMover : MonoBehaviour
 {
-    [SerializeField] private GroundDetection _groundDetection;
+    [SerializeField] private GroundDetector _groundDetection;
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce = 10;
 

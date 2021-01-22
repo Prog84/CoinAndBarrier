@@ -9,38 +9,27 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private int _capacity;
 
     private GridObject _spawned;
-    private List<GridObject> _pool = new List<GridObject>();
-    
+    private Dictionary<GameObject, GridObject> _pool = new Dictionary<GameObject, GridObject>();
+
     public void Initialize()
     {
-        for (int i = 0; i < _capacity; i++)
+        for (int templateIndex = 0; templateIndex < _templates.Length; templateIndex++)
         {
-            foreach (var prefab in _templates)
+            for (int capacityIndex = 0; capacityIndex < _capacity; capacityIndex++)
             {
-                _spawned = Instantiate(prefab, _container.transform);
+
+                _spawned = Instantiate(_templates[templateIndex], _container.transform);
                 _spawned.gameObject.SetActive(false);
-                _pool.Add(_spawned);
+                _pool.Add(_spawned.gameObject, _templates[templateIndex]);
+
             }
         }
     }
 
-    public bool TryGameObject(string TypeObject, out GridObject result) 
+    public void TryPlace(GridObject gridObject, Vector3 position)
     {
-        result = _pool.FirstOrDefault(p => p.gameObject.activeSelf == false && p.TypeObject == TypeObject);
-        return result != null;
-    }
-
-    public void TryDisableObject(float disablePointX)
-    {
-        foreach (var item in _pool)
-        {
-            if (item.gameObject.activeSelf == true)
-            {
-                if (item.transform.position.x < disablePointX)
-                {
-                    item.gameObject.SetActive(false);
-                }
-            }
-        }
+        var result = _pool.FirstOrDefault(p => p.Key.activeSelf == false && p.Value == gridObject);
+        result.Key.SetActive(true);
+        result.Key.transform.position = position;
     }
 }

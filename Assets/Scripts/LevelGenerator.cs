@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -12,18 +13,15 @@ public class LevelGenerator : MonoBehaviour
 
     private HashSet<Vector3Int> _collisionsMatrix = new HashSet<Vector3Int>();
     private int _startPositionView = 0;
-    private Camera _camera;
 
     private void Start()
     {
-        _camera = Camera.main;
         _objectPool.Initialize();
     }
 
     private void Update()
     {
         FillRange(_player.position, _viewRange);
-        DisableObjectAboardScreen();
     }
 
     private void FillRange(Vector3 center, float viewRange)
@@ -54,11 +52,7 @@ public class LevelGenerator : MonoBehaviour
 
         var position = GridToWorldPosition(gridPosition);
 
-        if (_objectPool.TryGameObject(template.TypeObject, out GridObject gridObject))
-        {
-            gridObject.gameObject.SetActive(true);
-            gridObject.gameObject.transform.position = position;
-        }
+        _objectPool.TryPlace(template, position);
     }
 
     private GridObject GetRandomTemplate(GridLayer layer)
@@ -77,13 +71,6 @@ public class LevelGenerator : MonoBehaviour
         }
 
         return null;
-    }
-
-    private void DisableObjectAboardScreen()
-    {
-        Vector3 disablePoint = _camera.ViewportToWorldPoint(new Vector2(0, 0.5f));
-
-        _objectPool.TryDisableObject(disablePoint.x); 
     }
 
     private Vector3 GridToWorldPosition(Vector3Int gridPosition)

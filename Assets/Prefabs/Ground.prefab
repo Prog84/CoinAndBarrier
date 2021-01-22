@@ -124,7 +124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _layer: 0
-  _typeObject: "\u0417\u0435\u043C\u043B\u044F"
   _chance: 100
 --- !u!114 &1130538735
 MonoBehaviour:

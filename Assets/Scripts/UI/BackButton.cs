@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class CreatorsScreen : MonoBehaviour
+public class BackButton : MonoBehaviour
 {
     [SerializeField] private Button _buttonBack;
 

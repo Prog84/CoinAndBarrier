@@ -4,17 +4,19 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     [SerializeField] private MenuScreen _menuScreen;
-    [SerializeField] private CreatorsScreen _creatorsScreen;
+    [SerializeField] private BackButton _backButton;
     [SerializeField] private Animator _animatorCreatorsScreen;
 
     private string _menuShow = "Show";
+    private string _gameLevel = "Level";
+
 
     private void OnEnable()
     {
         _menuScreen.PlayButtonClick += OnPlayButtonClick;
         _menuScreen.CreatorsButtonClick += OnCreatorsButtonClick;
         _menuScreen.ExitButtonClick += OnExitButtonClick;
-        _creatorsScreen.BackButtonClick += OnBackButtonClick;
+        _backButton.BackButtonClick += OnBackButtonClick;
     }
 
     private void OnDisable()
@@ -22,12 +24,12 @@ public class Menu : MonoBehaviour
         _menuScreen.PlayButtonClick -= OnPlayButtonClick;
         _menuScreen.CreatorsButtonClick -= OnCreatorsButtonClick;
         _menuScreen.ExitButtonClick -= OnExitButtonClick;
-        _creatorsScreen.BackButtonClick -= OnBackButtonClick;
+        _backButton.BackButtonClick -= OnBackButtonClick;
     }
 
     private void OnPlayButtonClick()
     {
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene(_gameLevel);
     }
 
     private void OnCreatorsButtonClick()

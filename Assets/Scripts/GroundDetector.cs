@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GroundDetection : MonoBehaviour
+public class GroundDetector : MonoBehaviour
 {
     public bool IsGrounded { get; private set; }
     
